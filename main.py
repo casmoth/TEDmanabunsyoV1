@@ -11,7 +11,8 @@ file_path = ""
 while True:
     try:
         link = str(input("リンク（例：https://www.ted.com/）："))
-        if link[0] == 'https://www.ted.com/':
+        print(link[0:20])
+        if link[0:20] == "https://www.ted.com/":
             print("リンク入力完了")
             print("-----------------------------------------------------")
             break
