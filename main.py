@@ -2,7 +2,7 @@
 
 
 
-# ファイルのパス / file path （MacならFinder開いて、入れたいファイルにOptionキー押しながらでパスを取るとコピーできる）
+# ファイルのパス / file path （MacならFinder開いて、入れたいファイルにControl押しながらクリックして、Optionキー押すとパスをコピーすると出るのでコピーする）
 file_path = ""
 
 
@@ -43,7 +43,7 @@ while True:
     
 
 # 3
-data = ""
+data = "aaa"
 
 
 
@@ -52,15 +52,27 @@ data = ""
 
 # 5 txt_data
 if output_mode == 1:
+    file_path += "/TED.txt" # テキストデータのパスにTED.txtを加えてTED.txtというファイルの名前を作る
+
     with open(file_path, mode='w') as f:
-        f.write(data)
+        f.write(data) # ファイルがなかったら作り、ファイルがあったら上書きして出力
     
     print("ファイル作成完了！")
     print("-----------------------------------------------------")
 
-# 5
+# 5　Google docs
 elif output_mode == 2:
     pass
+
+# 5 wordデータ
+elif output_mode == 3:
+    file_path += "/TED.docx"
+
+    with open(file_path, mode='w') as f:
+        f.write(data)
+
+    print("ファイル作成完了！")
+    print("-----------------------------------------------------")
 
 # 出力 / output
 # 6
