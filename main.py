@@ -1,5 +1,5 @@
 # import
-
+import pyperclip # コピーするためのモジュール（使用するためにはpip install pyperclipをする必要があります！）
 
 
 # ファイルのパス / file path （MacならFinder開いて、入れたいファイルにControl押しながらクリックして、Optionキー押すとパスをコピーすると出るのでコピーする）
@@ -27,7 +27,7 @@ while True:
 # 2
 while True:
     try:
-        output_mode = int(input("出力するデータの型（txtデータなら1, Google docsなら2, wordデータなら3）："))
+        output_mode = int(input("出力するデータの型（txtデータなら1, wordデータなら2, コピーなら3）："))
         if output_mode == 1 or output_mode == 2 or output_mode == 3:
             print("出力データの型入力完了")
             print("-----------------------------------------------------")
@@ -60,16 +60,18 @@ if output_mode == 1:
     print("ファイル作成完了！")
     print("-----------------------------------------------------")
 
-# 5　Google docs
-elif output_mode == 2:
-    pass
-
 # 5 wordデータ
-elif output_mode == 3:
+elif output_mode == 2:
     file_path += "/TED.docx" # テキストデータのパスに/TED.docxを加えてTED.docxというファイルの名前を作る
 
     with open(file_path, mode='w') as f:
         f.write(data) # ファイルがなかったら作り、ファイルがあったら上書きして出力
+
+    print("ファイル作成完了！")
+    print("-----------------------------------------------------")
+
+elif output_mode == 3:
+    pyperclip.copy(data)
 
     print("ファイル作成完了！")
     print("-----------------------------------------------------")
