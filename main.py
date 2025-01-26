@@ -12,6 +12,8 @@ while True:
     try:
         link = str(input("リンク（例：https://www.ted.com/）："))
         if link[0] == 'h':
+            print("リンク入力完了")
+            print("-----------------------------------------------------")
             break
         else:
             print("無効な入力です。")
@@ -25,9 +27,15 @@ while True:
 # 2
 while True:
     try:
-        output_mode = int(input("出力するデータの型（txtデータなら1, Google docsなら2, wordなら3）："))
+        output_mode = int(input("出力するデータの型（txtデータなら1, Google docsなら2, wordデータなら3）："))
         if output_mode == 1 or output_mode == 2 or output_mode == 3:
+            print("出力データの型入力完了")
+            print("-----------------------------------------------------")
             break
+        else:
+            print("無効な入力です。")
+            print("-----------------------------------------------------")
+
 
     except ValueError:
         print("無効な入力です。")
