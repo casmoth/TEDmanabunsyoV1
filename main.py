@@ -1,7 +1,7 @@
 # import
 
 # aaaaaaaaaaaaaa
-aaa
+
 # 1
 # 入力 / input
 while True:
