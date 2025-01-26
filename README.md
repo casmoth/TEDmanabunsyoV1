@@ -1,1 +1,2 @@
-a
+TEDまなぶんしょサービス
+Google docsを見てね。
