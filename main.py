@@ -50,6 +50,7 @@ data = "aaa" # テスト
 # 4
 
 
+
 # 5 txt_data
 if output_mode == 1:
     file_path += "/TED.txt" # テキストデータのパスにTED.txtを加えてTED.txtというファイルの名前を作る
