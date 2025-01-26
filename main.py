@@ -1,6 +1,10 @@
 # import
 
-# aaaaaaaaaaaaaa
+
+
+# ファイルのパス / file path （MacならFinder開いて、入れたいファイルにOptionキー押しながらでパスを取るとコピーできる）
+file_path = ""
+
 
 # 1
 # 入力 / input
@@ -22,7 +26,8 @@ while True:
 while True:
     try:
         output_mode = int(input("出力するデータの型（txtデータなら1, Google docsなら2, wordなら3）："))
-        break
+        if output_mode == 1 or output_mode == 2 or output_mode == 3:
+            break
 
     except ValueError:
         print("無効な入力です。")
@@ -30,14 +35,25 @@ while True:
     
 
 # 3
+data = ""
 
 
 
 # 4
 
 
+# 5 txt_data
+if output_mode == 1:
+    with open(file_path, mode='w') as f:
+        f.write(data)
+    
+    print("ファイル作成完了！")
+    print("-----------------------------------------------------")
+
 # 5
-# 5
+elif output_mode == 2:
+    pass
 
 # 出力 / output
 # 6
+print("出力完了！！")
