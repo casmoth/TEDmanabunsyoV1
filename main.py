@@ -20,7 +20,6 @@ while True:
             print("無効な入力です。")
             print("-----------------------------------------------------")
 
-
     except ValueError:
         print("無効な入力です。")
         print("-----------------------------------------------------")
@@ -36,7 +35,6 @@ while True:
         else:
             print("無効な入力です。")
             print("-----------------------------------------------------")
-
 
     except ValueError:
         print("無効な入力です。")
@@ -54,7 +52,7 @@ data = "aaa" # テスト
 
 # 5 txt_data
 if output_mode == 1:
-    file_path += "/TED.txt" # テキストデータのパスにTED.txtを加えてTED.txtというファイルの名前を作る
+    file_path += "/TED.txt" # テキストデータのパスに/TED.txtを加えてTED.txtというファイルの名前を作る
 
     with open(file_path, mode='w') as f:
         f.write(data) # ファイルがなかったら作り、ファイルがあったら上書きして出力
@@ -68,10 +66,10 @@ elif output_mode == 2:
 
 # 5 wordデータ
 elif output_mode == 3:
-    file_path += "/TED.docx"
+    file_path += "/TED.docx" # テキストデータのパスに/TED.docxを加えてTED.docxというファイルの名前を作る
 
     with open(file_path, mode='w') as f:
-        f.write(data)
+        f.write(data) # ファイルがなかったら作り、ファイルがあったら上書きして出力
 
     print("ファイル作成完了！")
     print("-----------------------------------------------------")
