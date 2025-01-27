@@ -26,9 +26,9 @@ while True:
 # 2
 while True:
     try:
-        output_mode = int(input("出力するデータの型（txtデータなら1, wordデータなら2, コピーなら3）："))
+        output_mode = int(input("出力するデータ型（txtデータなら1, wordデータなら2, コピーなら3）："))
         if output_mode == 1 or output_mode == 2 or output_mode == 3:
-            print("出力データの型入力完了")
+            print("出力データ型入力完了")
             print("-----------------------------------------------------")
             break
         else:
@@ -50,7 +50,7 @@ data = "aaa" # テスト
 
 
 # 5 txt_data
-if output_mode == 1:
+if output_mode == 1 and file_path != "":
     file_path += "/TED.txt" # テキストデータのパスに/TED.txtを加えてTED.txtというファイルの名前を作る
 
     with open(file_path, mode='w') as f:
@@ -60,7 +60,7 @@ if output_mode == 1:
     print("-----------------------------------------------------")
 
 # 5 wordデータ
-elif output_mode == 2:
+elif output_mode == 2 and file_path != "":
     file_path += "/TED.docx" # テキストデータのパスに/TED.docxを加えてTED.docxというファイルの名前を作る
 
     with open(file_path, mode='w') as f:
@@ -69,12 +69,16 @@ elif output_mode == 2:
     print("ファイル作成完了！")
     print("-----------------------------------------------------")
 
-elif output_mode == 3:
+elif output_mode == 3 and file_path != "":
     pyperclip.copy(data)
 
     print("ファイル作成完了！")
     print("-----------------------------------------------------")
 
+else:
+    print("エラー：出力不可")
+    print("※パスが設定されていないかもしれません。")
+    exit()
 
 # 出力 / output
 # 6
