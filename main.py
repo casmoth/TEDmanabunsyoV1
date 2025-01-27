@@ -11,7 +11,7 @@ file_path = ""
 while True:
     try:
         link = str(input("リンク（例：https://www.ted.com/）："))
-        if link[0:20] == "https://www.ted.com/":
+        if link.startswith("https://www.ted.com/"):
             print("リンク入力完了")
             print("-----------------------------------------------------")
             break
@@ -27,7 +27,7 @@ while True:
 while True:
     try:
         output_mode = int(input("出力するデータ型（txtデータなら1, wordデータなら2, コピーなら3）："))
-        if output_mode == 1 or output_mode == 2 or output_mode == 3:
+        if output_mode in [1, 2 ,3]:
             print("出力データ型入力完了")
             print("-----------------------------------------------------")
             break
@@ -70,7 +70,7 @@ elif output_mode == 2 and file_path != "":
     print("-----------------------------------------------------")
 
 # 5 パソコンのクリップボードにコピー
-elif output_mode == 3 and file_path != "":
+elif output_mode == 3:
     pyperclip.copy(data)
 
     print("ファイル作成完了！")
