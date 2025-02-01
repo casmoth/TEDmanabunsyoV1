@@ -1,5 +1,5 @@
 # import
-import pyperclip # コピーするためのライブラリ（使用するためにはコンソールでpip install pyperclipをする必要があります！）
+import pyperclip # コピーするためのモジュール（使用するためにはコンソールでpip install pyperclipをする必要があります！）
 
 
 # ファイルのパス / file path （MacならFinder開いて、入れたいフォルダにControl押しながらクリックして、Optionキー押すとパスをコピーすると出るのでコピーする）
