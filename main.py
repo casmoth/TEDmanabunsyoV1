@@ -11,8 +11,13 @@ file_path = ""
 # 入力 / input
 while True:
     try:
-        url = str(input("リンク（例：https://www.ted.com/ | transcriptを押してリンクの最後が/transcriptとなる必要があります）："))
-        if url.startswith("https://www.ted.com/"):
+        print("リンク例：https://www.ted.com/ | transcriptを押してリンクの最後が/transcriptとなる必要があります")
+        print("コードを終了させたい場合、「no」と入力してください。")
+        url = str(input("リンク："))
+        if url == "no":
+            print("コードを終了させます。")
+            exit() 
+        elif url.startswith("https://www.ted.com/"):
             print("リンク入力完了")
             print("-----------------------------------------------------")
             break
@@ -29,7 +34,10 @@ while True:
 while True:
     try:
         output_mode = int(input("出力するデータ型（txtデータなら1, wordデータなら2, コピーなら3）："))
-        if output_mode in [1, 2 ,3]:
+        if output_mode == "no":
+            print("コードを終了させます。")
+            exit()
+        elif output_mode in [1, 2 ,3]:
             print("出力データ型入力完了")
             print("-----------------------------------------------------")
             break
