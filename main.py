@@ -1,6 +1,7 @@
 # import
 import pyperclip # コピーするためのモジュール（使用するためにはコンソールでpip install pyperclipをする必要があります！）
-
+import requests # サイトのデータを読み取る
+import re # データの編集（データ探し、ピリオドに改行を作るなど）
 
 # ファイルのパス / file path （MacならFinder開いて、入れたいフォルダにControl押しながらクリックして、Optionキー押すとパスをコピーすると出るのでコピーする）
 file_path = ""
@@ -10,8 +11,8 @@ file_path = ""
 # 入力 / input
 while True:
     try:
-        link = str(input("リンク（例：https://www.ted.com/）："))
-        if link.startswith("https://www.ted.com/"):
+        url = str(input("リンク（例：https://www.ted.com/ | transcriptを押してリンクの最後が/transcriptとなる必要があります）："))
+        if url.startswith("https://www.ted.com/"):
             print("リンク入力完了")
             print("-----------------------------------------------------")
             break
@@ -22,6 +23,7 @@ while True:
     except ValueError:
         print("無効な入力です。")
         print("-----------------------------------------------------")
+
 
 # 2
 while True:
@@ -41,12 +43,14 @@ while True:
     
 
 # 3
-data = "aaa" # テスト
-
+response = requests.get(url)
+pattern = r'"transcript":\s*"([^"]*?)",\s*"embedUrl"'
+match = re.search(pattern, response.text)
+match_data = match.group(1)
 
 
 # 4
-
+data = re.sub(r'(?<!\d)(?<!Mr)(?<!Ms)(?<!Dr)(?<!Mrs)\.(?!\d)', '.\n', match_data)
 
 
 # 5 txt_data
