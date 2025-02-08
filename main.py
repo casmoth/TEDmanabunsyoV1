@@ -11,13 +11,15 @@ file_path = ""
 # 入力 / input
 while True:
     try:
-        print("リンク例：https://www.ted.com/ | transcriptを押してリンクの最後が/transcriptとなる必要があります")
+        print("リンク例：https://www.ted.com/ ")
         print("コードを終了させたい場合、「no」と入力してください。")
         url = str(input("リンク："))
         if url == "no":
             print("コードを終了させます。")
             exit() 
         elif url.startswith("https://www.ted.com/"):
+            if "/transcript" in url:
+                url += "/transcript"
             print("リンク入力完了")
             print("-----------------------------------------------------")
             break
