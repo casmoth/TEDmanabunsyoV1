@@ -60,8 +60,8 @@ match_data = match.group(1)
 
 
 # 4
-data = re.sub(r'(?<!\d)(?<!Mr)(?<!Ms)(?<!Dr)(?<!Mrs)\.(?!\d)', '.\n', match_data)
-
+checked_data = re.sub(r'(?<!\d)(?<!Mr)(?<!Ms)(?<!Dr)(?<!Mrs)\.(?!\d)', '.\n', match_data)
+data = re.sub(r"&apos;", "'", checked_data)
 
 # 5 txt_data
 if output_mode == 1 and file_path != "":
