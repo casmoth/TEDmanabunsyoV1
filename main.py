@@ -94,6 +94,7 @@ elif output_mode == 3 and data != "":
 else:
     print("エラー：出力不可")
     print("※パスが設定されていないかもしれません。")
+    print("※原稿データがなかったかもしれません。")
     exit()
 
 
