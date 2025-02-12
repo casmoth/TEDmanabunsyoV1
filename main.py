@@ -35,7 +35,7 @@ while True:
 # 2
 while True:
     try:
-        output_mode = int(input("出力するデータ型（txtデータなら1, wordデータなら2, コピーなら3）："))
+        output_mode = int(input("出力するデータ型（txtデータなら1, wordデータなら2, コピーなら3, コードを終了させるならno）："))
         if output_mode == "no":
             print("コードを終了させます。")
             exit()
@@ -64,7 +64,7 @@ checked_data = re.sub(r'(?<!\d)(?<!Mr)(?<!Ms)(?<!Dr)(?<!Mrs)\.(?!\d)', '.\n', ma
 data = re.sub(r"&apos;", "'", checked_data)
 
 # 5 txt_data
-if output_mode == 1 and file_path != "":
+if output_mode == 1 and file_path != "" and data != "":
     file_path += "/TED.txt" # テキストデータのパスに/TED.txtを加えてTED.txtというファイルの名前を作る
 
     with open(file_path, mode='w') as f:
@@ -74,7 +74,7 @@ if output_mode == 1 and file_path != "":
     print("-----------------------------------------------------")
 
 # 5 wordデータ
-elif output_mode == 2 and file_path != "":
+elif output_mode == 2 and file_path != "" and data != "":
     file_path += "/TED.docx" # テキストデータのパスに/TED.docxを加えてTED.docxというファイルの名前を作る
 
     with open(file_path, mode='w') as f:
@@ -84,7 +84,7 @@ elif output_mode == 2 and file_path != "":
     print("-----------------------------------------------------")
 
 # 5 パソコンのクリップボードにコピー
-elif output_mode == 3:
+elif output_mode == 3 and data != "":
     pyperclip.copy(data)
 
     print("ファイル作成完了！")
