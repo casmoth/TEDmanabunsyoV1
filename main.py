@@ -56,7 +56,11 @@ while True:
 response = requests.get(url)
 pattern = r'"transcript":\s*"([^"]*?)",\s*"embedUrl"'
 match = re.search(pattern, response.text)
-match_data = match.group(1)
+if match:
+    match_data = match.group(1)
+else:
+    print("データ読み取りができませんでした。")
+    exit()
 
 
 # 4
