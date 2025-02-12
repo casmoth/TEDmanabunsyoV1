@@ -60,8 +60,15 @@ match_data = match.group(1)
 
 
 # 4
-checked_data = re.sub(r'(?<!\d)(?<!Mr)(?<!Ms)(?<!Dr)(?<!Mrs)\.(?!\d)', '.\n', match_data)
-data = re.sub(r"&apos;", "'", checked_data)
+data = re.sub(r"&apos;", "'", match_data)
+data = re.sub(r"&quot;", '"', data)
+data = re.sub(r'^\s+', '', data)
+data = re.sub(r'\n\s+', '\n', data)
+data = re.sub('." ', '."' + '\n', data) 
+data = re.sub(r'(?<!\w[Mm]r)(?<!\w[Mm]s)(?<!\w[Dd]r)(?<!\w[Mm]rs)(?<!\d)\.(?!\d)(?!\s*["\'])\s*', '.\n', data)  # 通常のピリオド
+data = re.sub(r'.\n” ', r'”\n', data)
+data = re.sub(r".Laughter. ", r'(Laughter)\n', data)
+data = re.sub(r".Applause. ", r'(Applause\n', data)
 
 # 5 txt_data
 if output_mode == 1 and file_path != "" and data != "":
