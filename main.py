@@ -64,15 +64,52 @@ else:
 
 
 # 4
-data = re.sub(r"&apos;", "'", match_data)
-data = re.sub(r"&quot;", '"', data)
-data = re.sub(r'^\s+', '', data)
-data = re.sub(r'\n\s+', '\n', data)
-data = re.sub('." ', '."' + '\n', data) 
-data = re.sub(r'(?<!\w[Mm]r)(?<!\w[Mm]s)(?<!\w[Dd]r)(?<!\w[Mm]rs)(?<!\d)\.(?!\d)(?!\s*["\'])\s*', '.\n', data)  # 通常のピリオド
-data = re.sub(r'.\n” ', r'”\n', data)
-data = re.sub(r".Laughter. ", r'(Laughter)\n', data)
-data = re.sub(r".Applause. ", r'(Applause\n', data)
+# HTML特殊文字を通常の文字に変換
+data = re.sub(r"&apos;", "'", match_data)  # &apos; を ' に変換
+data = re.sub(r"&quot;", '"', data)        # &quot; を " に変換
+
+# 空白文字の整理
+data = re.sub(r'^\s+', '', data)           # 行頭の空白を削除
+data = re.sub(r'\n\s+', '\n', data)        # 改行後の余分な空白を削除
+
+# ...の前での改行防止のため、一時的にマーカーに置換
+data = re.sub(r'\.{3}', 'ELLIPSIS_MARKER', data)  # ... を一時的なマーカーに置換
+
+# 引用文の整形
+data = re.sub(r'([^.])"\s+', r'\1"\n', data)    # 引用文の終わりで改行
+
+# 文末での改行（特定の条件を除外）
+data = re.sub(
+    r'(?<!\w[Mm]r)(?<!\w[Mm]s)(?<!\w[Dd]r)(?<!\w[Mm]rs)'  # Mr./Ms./Dr./Mrs. を除外
+    r'(?<!\d)\.(?!\d)'                                      # 数字の間のピリオドを除外
+    r'(?!\s*["\'])'                                         # 引用符の前のピリオドを除外
+    r'\s*', 
+    '.\n', 
+    data
+)
+
+# 感嘆符と疑問符での改行
+data = re.sub(r'([!?])\s+', r'\1\n', data)      # !と?の後で改行
+
+# 角括弧テキストの処理（修正版）
+data = re.sub(r'\[(.*?)\]', r'[\1]\n', data) # [...] の後に改行を入れ、余分な空白と改行を削除
+
+# ダッシュでの改行
+data = re.sub(r'--\s+', '--\n', data)           # -- の後で改行
+
+# 引用符の改行を調整
+data = re.sub(r'\."\s+', '"\n', data)           # ." の後で改行
+
+# 括弧付きテキストの処理
+data = re.sub(r".Laughter. ", r'(Laughter)\n', data)  # (Laughter) に変換して改行
+data = re.sub(r".Applause. ", r'(Applause)\n', data)  # (Applause) に変換して改行
+data = re.sub(r".Sigh. ", r'(Sigh)\n', data)     # (Sigh) に変換して改行
+
+# マーカーを...に戻す
+data = re.sub('ELLIPSIS_MARKER', '...', data)    # 一時的なマーカーを ... に戻す
+
+# 複数の空行を単一の改行に置換
+data = re.sub(r'\n\s*\n', '\n', data)           # 複数の改行を1つに統合
 
 # 5 txt_data
 if output_mode == 1 and file_path != "" and data != "":
